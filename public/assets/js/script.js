@@ -384,6 +384,7 @@ function initMascot() {
     'kenapa'     : 'Banyak alasan untuk pilih kami 💪',
     'tentang'    : 'Kenalan lebih dekat yuk! 😊',
     'faq'        : 'Ada pertanyaan? Saya bantu! 🤔',
+    'merch'      : 'Cek koleksi merchandise branded kami! 🎁',
     'kontak'     : 'Yuk hubungi kami — gratis! 🚀',
   };
 
@@ -493,6 +494,25 @@ function initFAQ() {
   });
 }
 
+/* ── MERCHANDISE TABS ── */
+function initMerch() {
+  const tabs  = document.querySelectorAll('.merch-tab');
+  const cards = document.querySelectorAll('.merch-card');
+  if (!tabs.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const cat = tab.dataset.cat;
+      cards.forEach(card => {
+        const match = cat === 'all' || card.dataset.cat === cat;
+        card.classList.toggle('hidden', !match);
+      });
+    });
+  });
+}
+
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
@@ -507,6 +527,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCookieConsent();
   initCursorGlow();
   initMascot();
+  initMerch();
 
   // Hero canvas — pause when scrolled out of view (performance)
   const heroCanvas = document.getElementById('networkCanvas');
