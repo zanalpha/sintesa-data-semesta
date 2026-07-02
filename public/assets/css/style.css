@@ -193,7 +193,26 @@ em { font-style: italic; }
   gap: 11px;
   flex-shrink: 0;
 }
-.logo-icon { border-radius: 8px; flex-shrink: 0; }
+.logo-icon {
+  border-radius: 14px;
+  flex-shrink: 0;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
+  transition: filter .25s var(--ease), transform .25s var(--ease);
+}
+.logo:hover .logo-icon {
+  filter: drop-shadow(0 4px 14px rgba(59,91,219,0.5));
+  transform: scale(1.05);
+}
+.logo-preload-img {
+  border-radius: 14px;
+  display: block;
+}
+.tentang-logo-img {
+  border-radius: 20px;
+  display: block;
+  filter: drop-shadow(0 4px 20px rgba(59,91,219,0.3));
+}
 .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
 .logo-name { font-size: 17px; font-weight: 800; color: var(--t1); }
 .logo-tag {

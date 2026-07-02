@@ -543,13 +543,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Background canvas — always on, scroll-reactive, skip on reduced-motion
-  const bgCanvas = document.getElementById('bgCanvas');
-  if (bgCanvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const bg = new BgCanvas(bgCanvas);
-    bg.start();
-    document.addEventListener('visibilitychange', () => {
-      document.hidden ? bg.stop() : bg.start();
-    });
-  }
+  // Background canvas dihapus — diganti background statis (lebih ringan)
 });
