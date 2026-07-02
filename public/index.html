@@ -35,6 +35,23 @@
 </head>
 <body>
 
+  <!-- SKIP TO CONTENT (Accessibility) -->
+  <a href="#layanan" class="skip-link">Lewati ke konten utama</a>
+
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <svg width="52" height="52" viewBox="0 0 38 38" fill="none">
+        <rect width="38" height="38" rx="8" fill="url(#plg)"/>
+        <path d="M9 13C9 11.34 10.34 10 12 10H17C19.76 10 22 12.24 22 15C22 17.76 19.76 20 17 20H14C11.24 20 9 22.24 9 25C9 27.76 11.24 30 14 30H26" stroke="#04080F" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="9" cy="13" r="2" fill="#04080F"/>
+        <circle cx="26" cy="30" r="2" fill="#04080F"/>
+        <defs><linearGradient id="plg" x1="0" y1="0" x2="38" y2="38"><stop stop-color="#00D4FF"/><stop offset="1" stop-color="#00E676"/></linearGradient></defs>
+      </svg>
+      <div class="preloader-dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
   <!-- SCROLL PROGRESS -->
   <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -120,6 +137,26 @@
         </div>
       </div>
     </div>
+    <!-- Hero visual card (desktop only) -->
+    <div class="hero-visual-card" aria-hidden="true">
+      <div class="hvc-header">
+        <div class="hvc-dots"><span></span><span></span><span></span></div>
+        <span class="mono hvc-title">sistema.monitor</span>
+      </div>
+      <div class="hvc-items">
+        <div class="hvc-item"><span class="mono hvc-key">data_pipeline</span><span class="hvc-st st-ok">● running</span></div>
+        <div class="hvc-item"><span class="mono hvc-key">ai_inference</span><span class="hvc-st st-ok">● active</span></div>
+        <div class="hvc-item"><span class="mono hvc-key">security_scan</span><span class="hvc-st st-warn">◐ scanning</span></div>
+        <div class="hvc-item"><span class="mono hvc-key">cloud_sync</span><span class="hvc-st st-ok">● synced</span></div>
+        <div class="hvc-item"><span class="mono hvc-key">backup_job</span><span class="hvc-st st-ok">● complete</span></div>
+        <div class="hvc-item"><span class="mono hvc-key">api_gateway</span><span class="hvc-st st-ok">● healthy</span></div>
+      </div>
+      <div class="hvc-footer">
+        <div class="hvc-uptime-bar"><div class="hvc-uptime-fill"></div></div>
+        <span class="mono hvc-uptime-txt">99.98% uptime — 30 hari terakhir</span>
+      </div>
+    </div>
+
     <div class="hero-scroll">
       <span>Scroll</span>
       <svg width="14" height="22" viewBox="0 0 14 22" fill="none"><rect x="1" y="1" width="12" height="20" rx="6" stroke="currentColor" stroke-width="1.2"/><circle cx="7" cy="6" r="2" fill="currentColor" class="scroll-dot"/></svg>
@@ -530,6 +567,58 @@
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════════ KENAPA KAMI -->
+  <section class="kenapa-kami" id="kenapa">
+    <div class="wrap kenapa-inner">
+
+      <div class="kenapa-left">
+        <div class="section-eye">Keunggulan</div>
+        <h2 class="section-title">Kenapa Pilih Sintesa?</h2>
+        <p style="color:var(--t2);font-size:15px;margin-bottom:36px;line-height:1.7">Banyak penyedia IT di luar sana. Ini yang membedakan kami dari yang lain.</p>
+        <ul class="kenapa-list">
+          <li class="reveal">
+            <div class="kl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><strong>Konsultasi Gratis, Tanpa Tekanan</strong><span>Kami dengarkan dulu, baru tawarkan solusi. Tidak ada komitmen di sesi pertama.</span></div>
+          </li>
+          <li class="reveal">
+            <div class="kl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><strong>Satu Tim, Semua Layanan</strong><span>Dari strategi hingga maintenance — tidak perlu urus banyak vendor yang berbeda.</span></div>
+          </li>
+          <li class="reveal">
+            <div class="kl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><strong>Harga Transparan Sejak Awal</strong><span>Estimasi detail tanpa biaya tersembunyi. Apa yang kami sepakati, itulah yang Anda bayar.</span></div>
+          </li>
+          <li class="reveal">
+            <div class="kl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><strong>Garansi Bug-Fix 3 Bulan</strong><span>Setiap produk yang kami bangun dilindungi garansi. Ada yang error, kami perbaiki.</span></div>
+          </li>
+          <li class="reveal">
+            <div class="kl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><strong>Engineer yang Bicara, Bukan Sales</strong><span>Orang yang Anda ajak diskusi adalah orang yang benar-benar akan membangun sistemnya.</span></div>
+          </li>
+          <li class="reveal">
+            <div class="kl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><strong>Respons Cepat &amp; Terukur</strong><span>Pertanyaan bisnis dibalas dalam 24 jam. Untuk darurat teknis, kami respons dalam 2 jam.</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="kenapa-right">
+        <div class="kenapa-card reveal">
+          <div class="kc-stat"><span class="kc-num mono">100%</span><span class="kc-label">Komitmen pada kualitas — tidak ada pengerjaan setengah-setengah</span></div>
+          <div class="kc-divider"></div>
+          <div class="kc-stat"><span class="kc-num mono">24/7</span><span class="kc-label">Tim teknis siap dihubungi kapan pun dibutuhkan</span></div>
+          <div class="kc-divider"></div>
+          <div class="kc-stat"><span class="kc-num mono">3 Bln</span><span class="kc-label">Garansi bug-fix setelah produk go-live</span></div>
+          <div class="kc-divider"></div>
+          <div class="kc-stat"><span class="kc-num mono">&lt;2 Jam</span><span class="kc-label">Target respons untuk insiden teknis mendesak</span></div>
+          <a href="#kontak" class="btn-primary" style="margin-top:28px;width:100%;justify-content:center;display:flex">Mulai Konsultasi Gratis</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ═══════════════════════════════════════ FAQ -->
   <section class="faq" id="faq">
     <div class="wrap">
@@ -761,6 +850,27 @@
     </div>
   </footer>
 
+  <!-- STICKY MOBILE CTA -->
+  <div class="mobile-cta-bar" id="mobileCTABar">
+    <a href="https://wa.me/62817200503?text=Halo%20Sintesa%2C%20saya%20ingin%20konsultasi." target="_blank" rel="noopener" class="mcta-wa">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.549 4.14 1.595 5.946L.057 24l6.305-1.654a11.9 11.9 0 005.683 1.448h.005C18.61 23.794 24 18.458 24 11.9 24 8.724 22.757 5.736 20.514 3.49 18.27 1.246 15.28 0 12.05 0z"/></svg>
+      WhatsApp
+    </a>
+    <a href="#kontak" class="mcta-konsultasi">Konsultasi Gratis</a>
+  </div>
+
+  <!-- COOKIE CONSENT -->
+  <div class="cookie-bar" id="cookieBar" role="dialog" aria-label="Persetujuan cookie">
+    <div class="cookie-text">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#00D4FF" stroke-width="1.8"/><path d="M12 8v4M12 16h.01" stroke="#00D4FF" stroke-width="2" stroke-linecap="round"/></svg>
+      <p>Kami menggunakan cookie untuk meningkatkan pengalaman Anda sesuai <strong>UU PDP No. 27/2022</strong>. Dengan melanjutkan, Anda menyetujui penggunaannya.</p>
+    </div>
+    <div class="cookie-actions">
+      <button class="cookie-decline" id="cookieDecline">Tolak</button>
+      <button class="cookie-accept" id="cookieAccept">Terima</button>
+    </div>
+  </div>
+
   <!-- WHATSAPP FLOAT -->
   <a href="https://wa.me/62817200503?text=Halo%20PT%20Sintesa%20Data%20Semesta%2C%20saya%20ingin%20konsultasi." target="_blank" rel="noopener" class="wa-float" aria-label="Chat WhatsApp">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.549 4.14 1.595 5.946L.057 24l6.305-1.654a11.9 11.9 0 005.683 1.448h.005C18.61 23.794 24 18.458 24 11.9 24 8.724 22.757 5.736 20.514 3.49 18.27 1.246 15.28 0 12.05 0z"/></svg>
@@ -772,6 +882,7 @@
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M18 15l-6-6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 
-  <script src="assets/js/script.js"></script>
+  <script src="assets/js/script.js" defer></script>
+  <noscript><style>.preloader{display:none!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </body>
 </html>

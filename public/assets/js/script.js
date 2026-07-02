@@ -243,6 +243,31 @@ function initForm() {
   });
 }
 
+/* ── PRELOADER ── */
+function initPreloader() {
+  const p = document.getElementById('preloader');
+  if (!p) return;
+  const hide = () => p.classList.add('hidden');
+  if (document.readyState === 'complete') { setTimeout(hide, 200); return; }
+  window.addEventListener('load', () => setTimeout(hide, 250));
+  setTimeout(hide, 3000); // failsafe
+}
+
+/* ── COOKIE CONSENT ── */
+function initCookieConsent() {
+  const bar = document.getElementById('cookieBar');
+  if (!bar || localStorage.getItem('sintesa_cookie')) return;
+  setTimeout(() => bar.classList.add('show'), 2500);
+  document.getElementById('cookieAccept').addEventListener('click', () => {
+    localStorage.setItem('sintesa_cookie', 'accepted');
+    bar.classList.remove('show');
+  });
+  document.getElementById('cookieDecline').addEventListener('click', () => {
+    localStorage.setItem('sintesa_cookie', 'declined');
+    bar.classList.remove('show');
+  });
+}
+
 /* ── SCROLL PROGRESS ── */
 function initScrollProgress() {
   const bar = document.getElementById('scrollProgress');
@@ -286,6 +311,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollProgress();
   initBackTop();
   initFAQ();
+  initPreloader();
+  initCookieConsent();
 
   const canvas = document.getElementById('networkCanvas');
   if (canvas) {
