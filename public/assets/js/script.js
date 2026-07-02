@@ -243,6 +243,39 @@ function initForm() {
   });
 }
 
+/* ── SCROLL PROGRESS ── */
+function initScrollProgress() {
+  const bar = document.getElementById('scrollProgress');
+  if (!bar) return;
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+  }, { passive: true });
+}
+
+/* ── BACK TO TOP ── */
+function initBackTop() {
+  const btn = document.getElementById('backTop');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('show', window.scrollY > 500);
+  }, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+/* ── FAQ ACCORDION ── */
+function initFAQ() {
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+}
+
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
@@ -250,6 +283,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initTicker();
   initForm();
+  initScrollProgress();
+  initBackTop();
+  initFAQ();
 
   const canvas = document.getElementById('networkCanvas');
   if (canvas) {
