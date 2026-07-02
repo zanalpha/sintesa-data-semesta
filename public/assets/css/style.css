@@ -1804,3 +1804,169 @@ a.kontak-item:hover { border-color: var(--border-hi); }
   .cookie-actions { width: 100%; }
   .cookie-accept, .cookie-decline { flex: 1; text-align: center; }
 }
+
+/* ════════════════════════════════════════
+   MASCOT — SINTA
+   ════════════════════════════════════════ */
+
+.mascot-wrap {
+  position: fixed;
+  bottom: 28px;
+  left: 24px;
+  z-index: 898;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  pointer-events: none;
+}
+
+/* ── Speech Bubble ── */
+.mascot-bubble {
+  background: var(--surface);
+  border: 1px solid var(--border-hi);
+  border-radius: 12px 12px 12px 3px;
+  padding: 11px 34px 11px 14px;
+  font-size: 13px;
+  color: var(--t1);
+  max-width: 210px;
+  min-width: 150px;
+  line-height: 1.55;
+  position: relative;
+  box-shadow: 0 6px 28px rgba(0,0,0,.5), 0 0 0 1px rgba(0,212,255,.06);
+  opacity: 0;
+  transform: translateY(10px) scale(.93);
+  transform-origin: bottom left;
+  transition: opacity .28s var(--ease), transform .28s var(--ease);
+  pointer-events: none;
+}
+.mascot-bubble.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+/* bubble tail */
+.mascot-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -9px; left: 18px;
+  border: 5px solid transparent;
+  border-top-color: var(--border-hi);
+}
+.mascot-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -7px; left: 19px;
+  border: 4px solid transparent;
+  border-top-color: var(--surface);
+  z-index: 1;
+}
+
+.mascot-close {
+  position: absolute;
+  top: 7px; right: 9px;
+  background: none;
+  border: none;
+  color: var(--t3);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px;
+  transition: color .15s;
+}
+.mascot-close:hover { color: var(--t1); }
+
+/* ── Character ── */
+.mascot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  pointer-events: auto;
+  user-select: none;
+  /* float + greet combo */
+  animation: mascotFloat 3.6s ease-in-out 1.8s infinite;
+  filter: drop-shadow(0 4px 14px rgba(0,212,255,.3));
+  transition: filter .2s var(--ease);
+}
+.mascot:hover {
+  filter: drop-shadow(0 6px 22px rgba(0,212,255,.55));
+  animation-play-state: paused;
+}
+.mascot svg { width: 62px; display: block; }
+
+/* Gentle float */
+@keyframes mascotFloat {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* Greeting shake on page load */
+.mascot svg {
+  animation: mascotGreet .42s ease-in-out 3 .7s both;
+}
+@keyframes mascotGreet {
+  0%,100% { transform: rotate(0deg); }
+  35%      { transform: rotate(-7deg) scale(1.05); }
+  70%      { transform: rotate(7deg) scale(1.05); }
+}
+
+/* Arm wave on load */
+.mascot-arm {
+  transform-box: fill-box;
+  transform-origin: 0% 50%;
+  animation: armWave .4s ease-in-out 4 .9s both;
+}
+@keyframes armWave {
+  0%,100% { transform: rotate(0deg); }
+  50%      { transform: rotate(-30deg); }
+}
+
+/* Eye blink */
+.mascot-eye-l, .mascot-eye-r {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: eyeBlink 5s ease-in-out infinite;
+}
+.mascot-eye-r { animation-delay: .1s; }
+@keyframes eyeBlink {
+  0%,88%,100% { transform: scaleY(1); }
+  93%          { transform: scaleY(.07); }
+}
+
+/* Antenna pulse */
+.mascot-antenna {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: antennaPulse 2.3s ease-in-out infinite;
+}
+@keyframes antennaPulse {
+  0%,100% { fill: #00E676; transform: scale(1); }
+  50%      { fill: #00D4FF; transform: scale(1.35); }
+}
+
+/* Name tag */
+.mascot-name {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: .22em;
+  opacity: .6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .mascot-wrap { bottom: 82px; left: 14px; }
+  .mascot svg  { width: 50px; }
+  .mascot-bubble { font-size: 12px; max-width: 175px; }
+}
+@media (max-width: 360px) {
+  .mascot-wrap { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mascot, .mascot svg, .mascot-arm,
+  .mascot-eye-l, .mascot-eye-r, .mascot-antenna {
+    animation: none;
+  }
+}

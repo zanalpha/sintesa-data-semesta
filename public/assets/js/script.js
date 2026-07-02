@@ -366,6 +366,75 @@ function initCursorGlow() {
   tick();
 }
 
+/* ── MASCOT SINTA ── */
+function initMascot() {
+  const wrap    = document.getElementById('mascotWrap');
+  const bubble  = document.getElementById('mascotBubble');
+  const textEl  = document.getElementById('mascotText');
+  const closeBtn= document.getElementById('mascotClose');
+  const mascot  = document.getElementById('mascot');
+  if (!wrap || !bubble || !textEl || !mascot) return;
+
+  const messages = {
+    'beranda'    : 'Halo! Selamat datang di Sintesa! 👋',
+    'filosofi'   : 'Nama kami punya makna yang dalam 💡',
+    'cara-kerja' : 'Prosesnya simpel dan transparan ✅',
+    'layanan'    : '7 layanan lengkap untuk bisnis Anda 🛠️',
+    'kapabilitas': 'Ini keahlian inti tim kami ✨',
+    'kenapa'     : 'Banyak alasan untuk pilih kami 💪',
+    'tentang'    : 'Kenalan lebih dekat yuk! 😊',
+    'faq'        : 'Ada pertanyaan? Saya bantu! 🤔',
+    'kontak'     : 'Yuk hubungi kami — gratis! 🚀',
+  };
+
+  let hideTimer = null;
+  let lastSection = null;
+
+  function showBubble(text, ms) {
+    textEl.textContent = text;
+    bubble.classList.add('show');
+    clearTimeout(hideTimer);
+    if (ms) hideTimer = setTimeout(() => bubble.classList.remove('show'), ms);
+  }
+
+  function hideBubble() {
+    clearTimeout(hideTimer);
+    bubble.classList.remove('show');
+  }
+
+  // Greeting on page load
+  setTimeout(() => showBubble(messages['beranda'], 5000), 2000);
+
+  // Change message as user scrolls into each section
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && messages[e.target.id] && e.target.id !== lastSection) {
+        lastSection = e.target.id;
+        showBubble(messages[e.target.id], 3800);
+      }
+    });
+  }, { threshold: 0.45 });
+
+  document.querySelectorAll('[id]').forEach(el => {
+    if (messages[el.id]) obs.observe(el);
+  });
+
+  // Click mascot → toggle bubble
+  mascot.addEventListener('click', () => {
+    if (bubble.classList.contains('show')) {
+      hideBubble();
+    } else {
+      showBubble('Ada yang bisa saya bantu? 😊', 3500);
+    }
+  });
+
+  // Close button
+  closeBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    hideBubble();
+  });
+}
+
 /* ── PRELOADER ── */
 function initPreloader() {
   const p = document.getElementById('preloader');
@@ -437,6 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPreloader();
   initCookieConsent();
   initCursorGlow();
+  initMascot();
 
   // Hero canvas — pause when scrolled out of view (performance)
   const heroCanvas = document.getElementById('networkCanvas');
