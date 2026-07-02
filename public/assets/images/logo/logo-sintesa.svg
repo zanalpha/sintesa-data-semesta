@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" width="200" height="200">
+  <defs>
+    <linearGradient id="border-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3D52D4"/>
+      <stop offset="100%" stop-color="#17C8A0"/>
+    </linearGradient>
+    <linearGradient id="s-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5060DD"/>
+      <stop offset="100%" stop-color="#1AC9A2"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer rounded square with gradient border -->
+  <rect x="8" y="8" width="184" height="184" rx="44" fill="white" stroke="url(#border-grad)" stroke-width="15"/>
+  <!-- S path (circuit-style, gradient stroke) -->
+  <path d="M132 65 L76 65 Q54 65 54 87 L54 102 Q54 120 76 120 L132 120 Q150 120 150 138 L150 154 Q150 172 132 172 L76 172"
+        stroke="url(#s-grad)" stroke-width="22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Blue dot — top-right endpoint -->
+  <circle cx="132" cy="65" r="17" fill="#5560DE"/>
+  <!-- Green dot — bottom-left endpoint -->
+  <circle cx="76" cy="172" r="17" fill="#19C9A0"/>
+</svg>
