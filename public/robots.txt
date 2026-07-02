@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zanalpha.github.io/sintesa-website/sitemap.xml
+Sitemap: https://sintesadatasemesta.onrender.com/sitemap.xml
+
+Disallow: /assets/fonts/
