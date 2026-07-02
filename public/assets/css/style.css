@@ -1183,6 +1183,37 @@ a.kontak-item:hover { border-color: var(--border-hi); }
   .reveal { opacity: 1; transform: none; }
 }
 
+/* ── BACKGROUND CANVAS (always-on, scroll-reactive) ── */
+.bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: .09;
+  will-change: transform;
+}
+@media (max-width: 768px) { .bg-canvas { opacity: .05; } }
+@media (prefers-reduced-motion: reduce) { .bg-canvas { display: none; } }
+
+/* ── CURSOR GLOW ── */
+.cursor-glow {
+  position: fixed;
+  width: 480px;
+  height: 480px;
+  margin-left: -240px;
+  margin-top: -240px;
+  background: radial-gradient(circle, rgba(0,212,255,0.045) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity .5s ease;
+  will-change: left, top;
+}
+@media (hover: none), (max-width: 768px) { .cursor-glow { display: none; } }
+
 /* ── SCROLL PROGRESS ── */
 .scroll-progress {
   position: fixed;

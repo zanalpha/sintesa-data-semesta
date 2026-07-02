@@ -243,6 +243,129 @@ function initForm() {
   });
 }
 
+/* ── BG CANVAS — fixed, full-page, scroll-reactive ── */
+class BgCanvas {
+  constructor(canvas) {
+    this.c = canvas;
+    this.ctx = canvas.getContext('2d');
+    this.nodes = [];
+    this.nodeCount = 28;
+    this.maxDist = 220;
+    this.lastScrollY = window.scrollY;
+    this.running = false;
+    this.raf = null;
+    this.resize();
+    this.init();
+    window.addEventListener('resize', () => { this.resize(); this.init(); });
+    window.addEventListener('scroll', () => {
+      const delta = window.scrollY - this.lastScrollY;
+      this.lastScrollY = window.scrollY;
+      for (const n of this.nodes) {
+        n.vy += delta * 0.009;
+      }
+    }, { passive: true });
+  }
+
+  resize() {
+    this.w = this.c.width = window.innerWidth;
+    this.h = this.c.height = window.innerHeight;
+  }
+
+  init() {
+    this.nodes = Array.from({ length: this.nodeCount }, () => ({
+      x: Math.random() * this.w,
+      y: Math.random() * this.h,
+      vx: (Math.random() - 0.5) * 0.22,
+      vy: (Math.random() - 0.5) * 0.22,
+      r: Math.random() * 1.4 + 0.5,
+    }));
+  }
+
+  draw() {
+    const { ctx, w, h, nodes, maxDist } = this;
+    ctx.clearRect(0, 0, w, h);
+
+    for (const n of nodes) {
+      n.x += n.vx;
+      n.y += n.vy;
+      // wrap-around so particles are always on screen
+      if (n.x < -8) n.x = w + 8;
+      if (n.x > w + 8) n.x = -8;
+      if (n.y < -8) n.y = h + 8;
+      if (n.y > h + 8) n.y = -8;
+      // friction damps scroll nudge over time
+      n.vx *= 0.992;
+      n.vy *= 0.992;
+      const spd = Math.sqrt(n.vx * n.vx + n.vy * n.vy);
+      if (spd > 0.7) { n.vx *= 0.7 / spd; n.vy *= 0.7 / spd; }
+    }
+
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < maxDist) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(0,212,255,${(1 - d / maxDist) * 0.9})`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    for (const n of nodes) {
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(0,212,255,1)';
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  start() {
+    if (this.running) return;
+    this.running = true;
+    const loop = () => {
+      if (!this.running) return;
+      this.draw();
+      this.raf = requestAnimationFrame(loop);
+    };
+    loop();
+  }
+
+  stop() {
+    this.running = false;
+    cancelAnimationFrame(this.raf);
+  }
+}
+
+/* ── CURSOR GLOW ── */
+function initCursorGlow() {
+  const glow = document.getElementById('cursorGlow');
+  if (!glow || !window.matchMedia('(hover: hover)').matches) return;
+
+  let mx = -999, my = -999, cx = -999, cy = -999, visible = false;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    if (!visible) { glow.style.opacity = '1'; visible = true; }
+  });
+  document.addEventListener('mouseleave', () => {
+    glow.style.opacity = '0'; visible = false;
+  });
+
+  const tick = () => {
+    cx += (mx - cx) * 0.09;
+    cy += (my - cy) * 0.09;
+    glow.style.left = cx + 'px';
+    glow.style.top  = cy + 'px';
+    requestAnimationFrame(tick);
+  };
+  tick();
+}
+
 /* ── PRELOADER ── */
 function initPreloader() {
   const p = document.getElementById('preloader');
@@ -313,13 +436,29 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   initPreloader();
   initCookieConsent();
+  initCursorGlow();
 
-  const canvas = document.getElementById('networkCanvas');
-  if (canvas) {
-    const net = new NetworkCanvas(canvas);
-    net.start();
+  // Hero canvas — pause when scrolled out of view (performance)
+  const heroCanvas = document.getElementById('networkCanvas');
+  if (heroCanvas) {
+    const heroNet = new NetworkCanvas(heroCanvas);
+    heroNet.start();
+    const heroObs = new IntersectionObserver(entries => {
+      entries.forEach(e => e.isIntersecting ? heroNet.start() : heroNet.stop());
+    }, { rootMargin: '200px' });
+    heroObs.observe(heroCanvas.closest('section') || heroCanvas);
     document.addEventListener('visibilitychange', () => {
-      document.hidden ? net.stop() : net.start();
+      document.hidden ? heroNet.stop() : heroNet.start();
+    });
+  }
+
+  // Background canvas — always on, scroll-reactive, skip on reduced-motion
+  const bgCanvas = document.getElementById('bgCanvas');
+  if (bgCanvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const bg = new BgCanvas(bgCanvas);
+    bg.start();
+    document.addEventListener('visibilitychange', () => {
+      document.hidden ? bg.stop() : bg.start();
     });
   }
 });
