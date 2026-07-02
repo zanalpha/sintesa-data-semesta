@@ -1,0 +1,71 @@
+====================================================
+  PT SINTESA DATA SEMESTA — CATATAN PENGEMBANGAN
+====================================================
+
+WEBSITE LIVE:
+  https://zanalpha.github.io/sintesa-website/
+
+KONTAK PERUSAHAAN:
+  Telepon : +62 817-200-503
+  Email   : sintesadatasemesta@gmail.com
+  KBLI    : 62209
+
+----------------------------------------------------
+STRUKTUR FOLDER
+----------------------------------------------------
+
+sintesa-data-semesta/
+├── index.html              ← Halaman utama (JANGAN hapus)
+├── sitemap.xml             ← Untuk Google/SEO
+├── robots.txt              ← Untuk mesin pencari
+├── CATATAN-PENGEMBANGAN.txt ← File ini
+│
+├── assets/
+│   ├── css/
+│   │   └── style.css       ← Semua tampilan/desain
+│   ├── js/
+│   │   └── script.js       ← Semua interaksi
+│   ├── images/
+│   │   ├── logo/           ← Simpan logo PT di sini (PNG, SVG)
+│   │   ├── team/           ← Foto tim/karyawan
+│   │   ├── clients/        ← Logo klien/mitra
+│   │   └── portfolio/      ← Screenshot proyek yang sudah selesai
+│   └── fonts/              ← Font lokal (jika ada)
+│
+├── pages/
+│   ├── layanan/            ← Halaman detail tiap layanan (nanti)
+│   └── blog/               ← Artikel/insight perusahaan (nanti)
+│
+├── data/                   ← Data JSON untuk konten dinamis (nanti)
+│
+└── .github/
+    └── workflows/
+        └── deploy.yml      ← Auto-deploy ke internet setiap save
+
+----------------------------------------------------
+CARA UPDATE WEBSITE
+----------------------------------------------------
+
+1. Edit file di folder ini (index.html, style.css, dll)
+2. Buka Terminal, ketik:
+     cd /Users/rozzaqzibran/Downloads/sintesa-data-semesta
+     git add .
+     git commit -m "update: [tulis perubahan apa]"
+     git push
+3. Website otomatis update dalam 1-2 menit
+
+----------------------------------------------------
+RENCANA PENGEMBANGAN SELANJUTNYA
+----------------------------------------------------
+
+[ ] Upload logo resmi perusahaan ke assets/images/logo/
+[ ] Tambah halaman Portofolio
+[ ] Tambah halaman Blog/Artikel
+[ ] Tambah foto tim
+[ ] Integrasi WhatsApp button
+[ ] Daftarkan ke Google Search Console
+[ ] Setup domain berbayar .co.id atau .id
+[ ] Tambah Google Analytics
+[ ] Buat halaman terima kasih setelah isi form kontak
+
+====================================================
