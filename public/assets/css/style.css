@@ -1908,16 +1908,23 @@ a.kontak-item:hover { border-color: var(--border-hi); }
   cursor: pointer;
   pointer-events: auto;
   user-select: none;
-  /* float + greet combo */
   animation: mascotFloat 3.6s ease-in-out 1.8s infinite;
-  filter: drop-shadow(0 4px 14px rgba(61,135,203,.3));
+  filter: drop-shadow(0 6px 22px rgba(61,135,203,.45));
   transition: filter .2s var(--ease);
 }
 .mascot:hover {
-  filter: drop-shadow(0 6px 22px rgba(61,135,203,.55));
+  filter: drop-shadow(0 8px 28px rgba(61,135,203,.75));
   animation-play-state: paused;
 }
-.mascot svg { width: 62px; display: block; }
+
+/* Image mascot — mix-blend-mode removes dark background on dark site */
+.mascot-img {
+  width: 90px;
+  height: auto;
+  display: block;
+  mix-blend-mode: screen;
+  animation: mascotGreet .42s ease-in-out 3 .7s both;
+}
 
 /* Gentle float */
 @keyframes mascotFloat {
@@ -1925,48 +1932,11 @@ a.kontak-item:hover { border-color: var(--border-hi); }
   50%      { transform: translateY(-8px); }
 }
 
-/* Greeting shake on page load */
-.mascot svg {
-  animation: mascotGreet .42s ease-in-out 3 .7s both;
-}
+/* Greeting wobble on page load */
 @keyframes mascotGreet {
   0%,100% { transform: rotate(0deg); }
-  35%      { transform: rotate(-7deg) scale(1.05); }
-  70%      { transform: rotate(7deg) scale(1.05); }
-}
-
-/* Arm wave on load */
-.mascot-arm {
-  transform-box: fill-box;
-  transform-origin: 0% 50%;
-  animation: armWave .4s ease-in-out 4 .9s both;
-}
-@keyframes armWave {
-  0%,100% { transform: rotate(0deg); }
-  50%      { transform: rotate(-30deg); }
-}
-
-/* Eye blink */
-.mascot-eye-l, .mascot-eye-r {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: eyeBlink 5s ease-in-out infinite;
-}
-.mascot-eye-r { animation-delay: .1s; }
-@keyframes eyeBlink {
-  0%,88%,100% { transform: scaleY(1); }
-  93%          { transform: scaleY(.07); }
-}
-
-/* Antenna pulse */
-.mascot-antenna {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: antennaPulse 2.3s ease-in-out infinite;
-}
-@keyframes antennaPulse {
-  0%,100% { fill: #00E676; transform: scale(1); }
-  50%      { fill: #3D87CB; transform: scale(1.35); }
+  35%      { transform: rotate(-6deg) scale(1.04); }
+  70%      { transform: rotate(5deg) scale(1.04); }
 }
 
 /* Name tag */
@@ -1975,23 +1945,20 @@ a.kontak-item:hover { border-color: var(--border-hi); }
   font-weight: 700;
   color: var(--cyan);
   letter-spacing: .22em;
-  opacity: .6;
+  opacity: .7;
 }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .mascot-wrap { bottom: 82px; left: 14px; }
-  .mascot svg  { width: 50px; }
+  .mascot-img  { width: 72px; }
   .mascot-bubble { font-size: 12px; max-width: 175px; }
 }
 @media (max-width: 360px) {
   .mascot-wrap { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mascot, .mascot svg, .mascot-arm,
-  .mascot-eye-l, .mascot-eye-r, .mascot-antenna {
-    animation: none;
-  }
+  .mascot, .mascot-img { animation: none; }
 }
 
 /* ════════════════════════════════════════════════
