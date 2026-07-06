@@ -1917,22 +1917,91 @@ a.kontak-item:hover { border-color: var(--border-hi); }
   animation-play-state: paused;
 }
 
-/* Image mascot — mix-blend-mode removes dark background on dark site */
-.mascot-img {
+/* SVG mascot */
+.mascot-svg {
   width: 90px;
   height: auto;
   display: block;
-  mix-blend-mode: screen;
-  transform-origin: 50% 100%; /* rotate/scale from feet */
+  transform-origin: 50% 100%;
+  overflow: visible;
 }
 
-/* ── Animation classes (toggled by JS) ── */
-.mascot-img.anim-greet  { animation: mascotGreet  1.26s ease-in-out 1 both; }
-.mascot-img.anim-wave   { animation: mascotWave   1.2s  ease-in-out 1 both; }
-.mascot-img.anim-bounce { animation: mascotBounce 0.95s cubic-bezier(.36,.07,.19,.97) 1 both; }
-.mascot-img.anim-dance  { animation: mascotDance  1.6s  ease-in-out 1 both; }
-.mascot-img.anim-spin   { animation: mascotSpin   0.65s cubic-bezier(.36,.07,.19,.97) 1 both; }
-.mascot-img.anim-shake  { animation: mascotShake  0.8s  ease-in-out 1 both; }
+/* ── SVG body-part pivot points (transform-box: view-box uses SVG coordinate space) ── */
+.ms-head  { transform-box: view-box; transform-origin: 50px 65px; }
+.ms-arm-l { transform-box: view-box; transform-origin: 22px 71px; }
+.ms-arm-r { transform-box: view-box; transform-origin: 78px 71px; }
+.ms-leg-l { transform-box: view-box; transform-origin: 37px 114px; }
+.ms-leg-r { transform-box: view-box; transform-origin: 63px 114px; }
+.ms-eye-l { transform-box: view-box; transform-origin: 38px 20px; }
+.ms-eye-r { transform-box: view-box; transform-origin: 62px 20px; }
+.ms-body  { transform-box: view-box; transform-origin: 50px 87px; }
+
+/* ── Whole-body animation classes (toggled by JS on .mascot-svg) ── */
+.mascot-svg.anim-greet  { animation: mascotGreet  1.26s ease-in-out 1 both; }
+.mascot-svg.anim-wave   { animation: mascotWave   1.2s  ease-in-out 1 both; }
+.mascot-svg.anim-bounce { animation: mascotBounce 0.95s cubic-bezier(.36,.07,.19,.97) 1 both; }
+.mascot-svg.anim-dance  { animation: mascotDance  1.6s  ease-in-out 1 both; }
+.mascot-svg.anim-spin   { animation: mascotSpin   0.65s cubic-bezier(.36,.07,.19,.97) 1 both; }
+.mascot-svg.anim-shake  { animation: mascotShake  0.8s  ease-in-out 1 both; }
+
+/* ── Part-level animation keyframes ── */
+@keyframes msHeadNod {
+  0%,100% { transform: rotate(0deg); }
+  30%     { transform: rotate(12deg); }
+  70%     { transform: rotate(-5deg); }
+}
+@keyframes msHeadShake {
+  0%,100% { transform: rotate(0deg); }
+  20%     { transform: rotate(-10deg); }
+  40%     { transform: rotate(10deg); }
+  60%     { transform: rotate(-7deg); }
+  80%     { transform: rotate(5deg); }
+}
+@keyframes msHeadLook {
+  0%,100% { transform: rotate(0deg); }
+  35%     { transform: rotate(-8deg); }
+  65%     { transform: rotate(6deg); }
+}
+@keyframes msArmLWave {
+  0%,100% { transform: rotate(0deg); }
+  20%     { transform: rotate(-22deg); }
+  50%     { transform: rotate(15deg); }
+  75%     { transform: rotate(-18deg); }
+}
+@keyframes msArmLPump {
+  0%,100% { transform: translateY(0); }
+  40%     { transform: translateY(-10px); }
+  70%     { transform: translateY(-7px); }
+}
+@keyframes msArmRSwing {
+  0%,100% { transform: rotate(0deg); }
+  50%     { transform: rotate(18deg); }
+}
+@keyframes msEyeBlink {
+  0%,88%,100% { transform: scaleY(1); }
+  94%         { transform: scaleY(0.06); }
+}
+@keyframes msBodyBreathe {
+  0%,100% { transform: scaleY(1)     scaleX(1); }
+  50%     { transform: scaleY(1.016) scaleX(0.99); }
+}
+@keyframes msLegWalk {
+  0%,100% { transform: rotate(0deg); }
+  50%     { transform: rotate(10deg); }
+}
+
+/* ── Part-level animation trigger classes ── */
+.ms-head.anim-nod    { animation: msHeadNod    0.9s ease-in-out 2; }
+.ms-head.anim-shake  { animation: msHeadShake  0.8s ease-in-out 1; }
+.ms-head.anim-look   { animation: msHeadLook   1.2s ease-in-out 1; }
+.ms-arm-l.anim-wave  { animation: msArmLWave   1.0s ease-in-out 3; }
+.ms-arm-l.anim-pump  { animation: msArmLPump   0.7s ease-in-out 2; }
+.ms-arm-r.anim-swing { animation: msArmRSwing  0.8s ease-in-out 3; }
+.ms-eye-l.anim-blink,
+.ms-eye-r.anim-blink { animation: msEyeBlink   0.4s ease-in-out 1; }
+.ms-body.anim-breathe { animation: msBodyBreathe 2.5s ease-in-out infinite; }
+.ms-leg-l.anim-walk  { animation: msLegWalk 0.55s ease-in-out infinite; }
+.ms-leg-r.anim-walk  { animation: msLegWalk 0.55s ease-in-out 0.275s infinite; }
 
 /* Gentle float (on wrapper) */
 @keyframes mascotFloat {
@@ -2000,14 +2069,16 @@ a.kontak-item:hover { border-color: var(--border-hi); }
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .mascot-wrap { bottom: 82px; left: 14px; }
-  .mascot-img  { width: 72px; }
+  .mascot-svg  { width: 72px; }
   .mascot-bubble { font-size: 12px; max-width: 175px; }
 }
 @media (max-width: 360px) {
   .mascot-wrap { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mascot, .mascot-img, .mascot-img[class*="anim-"] { animation: none !important; }
+  .mascot, .mascot-svg, .mascot-svg[class*="anim-"],
+  .ms-head, .ms-arm-l, .ms-arm-r, .ms-leg-l, .ms-leg-r,
+  .ms-body, .ms-eye-l, .ms-eye-r { animation: none !important; }
 }
 
 /* ════════════════════════════════════════════════

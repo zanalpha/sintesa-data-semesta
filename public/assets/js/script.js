@@ -279,7 +279,7 @@ function initMascot() {
   const mascot  = document.getElementById('mascot');
   if (!wrap || !bubble || !textEl || !mascot) return;
 
-  const mascotImg = mascot.querySelector('.mascot-img');
+  const mascotSvg = mascot.querySelector('.mascot-svg');
 
   const messages = {
     'beranda'    : 'Halo! Selamat datang di Sintesa! 👋',
@@ -309,7 +309,7 @@ function initMascot() {
     bubble.classList.remove('show');
   }
 
-  /* ── Animation Controller ── */
+  /* ── Whole-body Animation Controller ── */
   const ANIMS = {
     greet:  { cls: 'anim-greet',  dur: 1300 },
     wave:   { cls: 'anim-wave',   dur: 1250 },
@@ -323,46 +323,88 @@ function initMascot() {
   let idleTimer  = null;
 
   function playAnim(name) {
-    if (!mascotImg || animLocked) return;
+    if (!mascotSvg || animLocked) return;
     const anim = ANIMS[name];
     if (!anim) return;
     animLocked = true;
-    ALL_CLS.forEach(c => mascotImg.classList.remove(c));
-    mascotImg.offsetWidth; // force reflow → restart CSS animation
-    mascotImg.classList.add(anim.cls);
+    ALL_CLS.forEach(c => mascotSvg.classList.remove(c));
+    mascotSvg.offsetWidth;
+    mascotSvg.classList.add(anim.cls);
     setTimeout(() => {
-      mascotImg.classList.remove(anim.cls);
+      mascotSvg.classList.remove(anim.cls);
       animLocked = false;
     }, anim.dur + 50);
   }
 
+  /* ── Part-level Animation Helper ── */
+  function animPart(sel, cls, dur) {
+    if (!mascotSvg) return;
+    const el = mascotSvg.querySelector(sel);
+    if (!el) return;
+    el.classList.remove(cls);
+    void el.offsetWidth;
+    el.classList.add(cls);
+    if (dur) setTimeout(() => el.classList.remove(cls), dur);
+  }
+
+  /* ── Auto eye blink every 3–8 s ── */
+  function scheduleEyeBlink() {
+    setTimeout(() => {
+      animPart('.ms-eye-l', 'anim-blink', 450);
+      setTimeout(() => animPart('.ms-eye-r', 'anim-blink', 450), 90);
+      scheduleEyeBlink();
+    }, 3000 + Math.random() * 5000);
+  }
+  scheduleEyeBlink();
+
+  /* ── Body always breathes ── */
+  if (mascotSvg) {
+    const bodyEl = mascotSvg.querySelector('.ms-body');
+    if (bodyEl) bodyEl.classList.add('anim-breathe');
+  }
+
+  /* ── Expose play API: whole-body + companion part animations ── */
+  mascot._play = function(name) {
+    playAnim(name);
+    if (name === 'greet') {
+      setTimeout(() => animPart('.ms-head',  'anim-nod',   1000), 200);
+      setTimeout(() => animPart('.ms-arm-l', 'anim-wave',  1100), 300);
+    } else if (name === 'wave') {
+      setTimeout(() => animPart('.ms-arm-l', 'anim-wave',  1100), 100);
+      setTimeout(() => animPart('.ms-head',  'anim-look',  1200), 200);
+    } else if (name === 'bounce') {
+      setTimeout(() => animPart('.ms-head',  'anim-nod',   900),  150);
+    } else if (name === 'dance') {
+      setTimeout(() => animPart('.ms-arm-r', 'anim-swing', 1600), 100);
+      setTimeout(() => animPart('.ms-arm-l', 'anim-wave',  1100), 350);
+    } else if (name === 'shake') {
+      setTimeout(() => animPart('.ms-head',  'anim-shake', 850),    0);
+    } else if (name === 'spin') {
+      setTimeout(() => animPart('.ms-head',  'anim-look',  700),  150);
+    }
+  };
+
   function scheduleIdle() {
     clearTimeout(idleTimer);
-    const delay = 5000 + Math.random() * 7000; // 5–12s random
+    const delay = 5000 + Math.random() * 7000;
     idleTimer = setTimeout(() => {
       const pool = ['wave', 'wave', 'bounce', 'dance', 'wave', 'shake', 'spin'];
-      playAnim(pool[Math.floor(Math.random() * pool.length)]);
+      mascot._play(pool[Math.floor(Math.random() * pool.length)]);
       scheduleIdle();
     }, delay);
   }
 
-  // Expose so swiper and other code can trigger animations
-  mascot._play = playAnim;
-
-  // Initial greet after 1s
-  setTimeout(() => playAnim('greet'), 1000);
+  setTimeout(() => mascot._play('greet'), 1000);
   scheduleIdle();
 
-  // Greeting on page load (bubble)
   setTimeout(() => showBubble(messages['beranda'], 5000), 2000);
 
-  // Change message as user scrolls into each detail section
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting && messages[e.target.id] && e.target.id !== lastSection) {
         lastSection = e.target.id;
         showBubble(messages[e.target.id], 3800);
-        playAnim('wave');
+        mascot._play('wave');
       }
     });
   }, { threshold: 0.45 });
@@ -373,7 +415,7 @@ function initMascot() {
 
   // Click/keyboard mascot → wave + toggle bubble
   const toggleMascot = () => {
-    playAnim('wave');
+    mascot._play('wave');
     if (bubble.classList.contains('show')) hideBubble();
     else showBubble('Ada yang bisa saya bantu? 😊', 3500);
   };
