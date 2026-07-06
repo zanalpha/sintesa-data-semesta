@@ -522,9 +522,11 @@ function initMainSwiper() {
 
   const slides = swiperEl.querySelectorAll('.swiper-slide');
   const total  = slides.length;
-  const counter = document.getElementById('slideCounter');
-  const indicator = document.getElementById('slideIndicator');
+  const counter       = document.getElementById('slideCounter');
+  const indicator     = document.getElementById('slideIndicator');
   const indicatorLabel = document.getElementById('slideIndicatorLabel');
+  const btnPrev       = document.getElementById('slidePrev');
+  const btnNext       = document.getElementById('slideNext');
 
   const swiper = new Swiper('#mainSwiper', {
     direction: 'horizontal',
@@ -557,6 +559,10 @@ function initMainSwiper() {
       });
     }
   });
+
+  // Arrow buttons
+  if (btnPrev) btnPrev.addEventListener('click', () => swiper.slidePrev());
+  if (btnNext) btnNext.addEventListener('click', () => swiper.slideNext());
 
   // Indicator click → next slide
   if (indicator) indicator.addEventListener('click', () => swiper.slideNext());
@@ -591,6 +597,10 @@ function initMainSwiper() {
     if (activeHref) {
       document.querySelector(`.nav-links a[href="${activeHref}"]`)?.classList.add('active');
     }
+    // Arrow button state
+    if (btnPrev) btnPrev.classList.toggle('disabled', index === 0);
+    if (btnNext) btnNext.classList.toggle('disabled', index >= total - 1);
+
     // Canvas — only on hero slide
     const canvas = document.getElementById('networkCanvas');
     if (canvas) canvas.style.opacity = index === 0 ? '0.6' : '0';

@@ -2586,6 +2586,39 @@ a.sli-contact-val:hover { color: var(--brand-blue); }
   transition: opacity .3s;
 }
 
+/* ── Arrow buttons ── */
+.slide-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26,26,26,0.6);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--t2);
+  backdrop-filter: blur(8px);
+  transition: background .2s var(--ease), border-color .2s var(--ease),
+              color .2s var(--ease), transform .2s var(--ease), opacity .3s;
+}
+.slide-arrow--prev { left: 20px; }
+.slide-arrow--next { right: 20px; }
+.slide-arrow:hover {
+  background: rgba(61,135,203,0.15);
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+  transform: translateY(-50%) scale(1.1);
+}
+.slide-arrow.disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .slide-indicator {
   position: fixed;
   bottom: 34px;
@@ -2627,4 +2660,5 @@ a.sli-contact-val:hover { color: var(--brand-blue); }
   .slide-counter { bottom: 20px; }
   .slide-indicator { bottom: 16px; right: 28px; }
   .slide-about-box { padding: 14px 16px; }
+  .slide-arrow { display: none; }
 }
