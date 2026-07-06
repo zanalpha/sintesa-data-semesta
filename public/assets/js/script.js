@@ -279,6 +279,8 @@ function initMascot() {
   const mascot  = document.getElementById('mascot');
   if (!wrap || !bubble || !textEl || !mascot) return;
 
+  const mascotImg = mascot.querySelector('.mascot-img');
+
   const messages = {
     'beranda'    : 'Halo! Selamat datang di Sintesa! 👋',
     'filosofi'   : 'Nama kami punya makna yang dalam 💡',
@@ -307,15 +309,60 @@ function initMascot() {
     bubble.classList.remove('show');
   }
 
-  // Greeting on page load
+  /* ── Animation Controller ── */
+  const ANIMS = {
+    greet:  { cls: 'anim-greet',  dur: 1300 },
+    wave:   { cls: 'anim-wave',   dur: 1250 },
+    bounce: { cls: 'anim-bounce', dur: 1000 },
+    dance:  { cls: 'anim-dance',  dur: 1650 },
+    spin:   { cls: 'anim-spin',   dur: 700  },
+    shake:  { cls: 'anim-shake',  dur: 850  },
+  };
+  const ALL_CLS = Object.values(ANIMS).map(a => a.cls);
+  let animLocked = false;
+  let idleTimer  = null;
+
+  function playAnim(name) {
+    if (!mascotImg || animLocked) return;
+    const anim = ANIMS[name];
+    if (!anim) return;
+    animLocked = true;
+    ALL_CLS.forEach(c => mascotImg.classList.remove(c));
+    mascotImg.offsetWidth; // force reflow → restart CSS animation
+    mascotImg.classList.add(anim.cls);
+    setTimeout(() => {
+      mascotImg.classList.remove(anim.cls);
+      animLocked = false;
+    }, anim.dur + 50);
+  }
+
+  function scheduleIdle() {
+    clearTimeout(idleTimer);
+    const delay = 5000 + Math.random() * 7000; // 5–12s random
+    idleTimer = setTimeout(() => {
+      const pool = ['wave', 'wave', 'bounce', 'dance', 'wave', 'shake', 'spin'];
+      playAnim(pool[Math.floor(Math.random() * pool.length)]);
+      scheduleIdle();
+    }, delay);
+  }
+
+  // Expose so swiper and other code can trigger animations
+  mascot._play = playAnim;
+
+  // Initial greet after 1s
+  setTimeout(() => playAnim('greet'), 1000);
+  scheduleIdle();
+
+  // Greeting on page load (bubble)
   setTimeout(() => showBubble(messages['beranda'], 5000), 2000);
 
-  // Change message as user scrolls into each section
+  // Change message as user scrolls into each detail section
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting && messages[e.target.id] && e.target.id !== lastSection) {
         lastSection = e.target.id;
         showBubble(messages[e.target.id], 3800);
+        playAnim('wave');
       }
     });
   }, { threshold: 0.45 });
@@ -324,8 +371,9 @@ function initMascot() {
     if (messages[el.id]) obs.observe(el);
   });
 
-  // Click/keyboard mascot → toggle bubble
+  // Click/keyboard mascot → wave + toggle bubble
   const toggleMascot = () => {
+    playAnim('wave');
     if (bubble.classList.contains('show')) hideBubble();
     else showBubble('Ada yang bisa saya bantu? 😊', 3500);
   };
@@ -544,16 +592,18 @@ function initMainSwiper() {
     // Canvas — only on hero slide
     const canvas = document.getElementById('networkCanvas');
     if (canvas) canvas.style.opacity = index === 0 ? '0.6' : '0';
-    // Mascot message on slide change (not on init)
+    // Mascot: bounce + show message on slide change (not on init)
     if (index > 0 && mascotSlideMsg[index]) {
       const textEl = document.getElementById('mascotText');
       const bubble = document.getElementById('mascotBubble');
+      const m = document.getElementById('mascot');
       if (textEl && bubble) {
         textEl.textContent = mascotSlideMsg[index];
         bubble.classList.add('show');
         clearTimeout(bubble._hideTimer);
         bubble._hideTimer = setTimeout(() => bubble.classList.remove('show'), 3500);
       }
+      if (m && m._play) m._play('bounce');
     }
   }
 }

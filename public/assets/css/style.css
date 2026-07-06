@@ -1923,20 +1923,69 @@ a.kontak-item:hover { border-color: var(--border-hi); }
   height: auto;
   display: block;
   mix-blend-mode: screen;
-  animation: mascotGreet .42s ease-in-out 3 .7s both;
+  transform-origin: 50% 100%; /* rotate/scale from feet */
 }
 
-/* Gentle float */
+/* ── Animation classes (toggled by JS) ── */
+.mascot-img.anim-greet  { animation: mascotGreet  1.26s ease-in-out 1 both; }
+.mascot-img.anim-wave   { animation: mascotWave   1.2s  ease-in-out 1 both; }
+.mascot-img.anim-bounce { animation: mascotBounce 0.95s cubic-bezier(.36,.07,.19,.97) 1 both; }
+.mascot-img.anim-dance  { animation: mascotDance  1.6s  ease-in-out 1 both; }
+.mascot-img.anim-spin   { animation: mascotSpin   0.65s cubic-bezier(.36,.07,.19,.97) 1 both; }
+.mascot-img.anim-shake  { animation: mascotShake  0.8s  ease-in-out 1 both; }
+
+/* Gentle float (on wrapper) */
 @keyframes mascotFloat {
   0%,100% { transform: translateY(0); }
   50%      { transform: translateY(-8px); }
 }
-
-/* Greeting wobble on page load */
+/* Greeting wobble */
 @keyframes mascotGreet {
-  0%,100% { transform: rotate(0deg); }
-  35%      { transform: rotate(-6deg) scale(1.04); }
-  70%      { transform: rotate(5deg) scale(1.04); }
+  0%,100% { transform: rotate(0deg) scale(1); }
+  30%      { transform: rotate(-7deg) scale(1.05); }
+  65%      { transform: rotate(6deg)  scale(1.05); }
+}
+/* Wave — sway side-to-side (simulates thumbs-up arm moving) */
+@keyframes mascotWave {
+  0%   { transform: rotate(0deg); }
+  15%  { transform: rotate(-11deg); }
+  35%  { transform: rotate(9deg); }
+  55%  { transform: rotate(-8deg); }
+  78%  { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
+/* Bounce — squash + jump */
+@keyframes mascotBounce {
+  0%   { transform: translateY(0)    scaleX(1)    scaleY(1); }
+  12%  { transform: translateY(0)    scaleX(1.08) scaleY(0.88); }
+  38%  { transform: translateY(-26px) scaleX(0.95) scaleY(1.05); }
+  62%  { transform: translateY(-26px) scaleX(0.95) scaleY(1.05); }
+  82%  { transform: translateY(0)    scaleX(1.09) scaleY(0.87); }
+  100% { transform: translateY(0)    scaleX(1)    scaleY(1); }
+}
+/* Dance — shimmy left-right */
+@keyframes mascotDance {
+  0%   { transform: translateX(0)    rotate(0deg); }
+  22%  { transform: translateX(-10px) rotate(-8deg); }
+  44%  { transform: translateX(0)    rotate(0deg); }
+  66%  { transform: translateX(10px)  rotate(8deg); }
+  88%  { transform: translateX(0)    rotate(0deg); }
+  100% { transform: translateX(0)    rotate(0deg); }
+}
+/* Spin — quick 360 */
+@keyframes mascotSpin {
+  0%   { transform: rotate(0deg)   scale(1); }
+  50%  { transform: rotate(180deg) scale(0.88); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+/* Shake — rapid vibration (attention getter) */
+@keyframes mascotShake {
+  0%,100% { transform: translateX(0); }
+  16%  { transform: translateX(-7px); }
+  33%  { transform: translateX(7px); }
+  50%  { transform: translateX(-5px); }
+  66%  { transform: translateX(5px); }
+  83%  { transform: translateX(-3px); }
 }
 
 /* Name tag */
@@ -1958,7 +2007,7 @@ a.kontak-item:hover { border-color: var(--border-hi); }
   .mascot-wrap { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mascot, .mascot-img { animation: none; }
+  .mascot, .mascot-img, .mascot-img[class*="anim-"] { animation: none !important; }
 }
 
 /* ════════════════════════════════════════════════
