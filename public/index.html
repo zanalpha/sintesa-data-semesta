@@ -37,7 +37,7 @@
 <body>
 
   <!-- SKIP TO CONTENT (Accessibility) -->
-  <a href="#layanan" class="skip-link">Lewati ke konten utama</a>
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
 
 
   <!-- PRELOADER -->
@@ -81,6 +81,7 @@
     </div>
   </header>
 
+  <main id="main-content">
   <!-- ═══════════════════════════════════════ MAIN SWIPER ══════════ -->
   <div class="swiper main-swiper" id="mainSwiper">
   <div class="swiper-wrapper">
@@ -106,8 +107,8 @@
         yang siap berkembang seiring kebutuhan Anda.
       </p>
       <div class="hero-cta">
-        <a href="#layanan" class="btn-primary">Eksplorasi Layanan</a>
-        <a href="#kontak" class="btn-ghost">Hubungi Kami</a>
+        <a href="#layanan-detail" class="btn-primary">Eksplorasi Layanan</a>
+        <a href="#kontak-detail" class="btn-ghost">Hubungi Kami</a>
       </div>
       <div class="hero-metrics">
         <div class="metric">
@@ -409,6 +410,9 @@
 
   </div><!-- /swiper-wrapper -->
 
+  <!-- SWIPER PAGINATION BULLETS -->
+  <div class="swiper-pg" id="swiperPagination"></div>
+
   <!-- SLIDE ARROW NAVIGATION -->
   <button class="slide-arrow slide-arrow--prev" id="slidePrev" aria-label="Slide sebelumnya">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -432,7 +436,6 @@
 
   <!-- ═══════════════════════════════════════ FILOSOFI DETAIL -->
   <section class="filosofi" id="filosofi-detail">
-  <section class="filosofi" id="filosofi">
     <div class="wrap">
       <div class="section-eye">Filosofi Nama</div>
       <h2 class="section-title">Nama Kami Bukan Kebetulan.</h2>
@@ -874,7 +877,7 @@
           <div class="kc-stat"><span class="kc-num mono">3 Bln</span><span class="kc-label">Garansi bug-fix setelah produk go-live</span></div>
           <div class="kc-divider"></div>
           <div class="kc-stat"><span class="kc-num mono">&lt;2 Jam</span><span class="kc-label">Target respons untuk insiden teknis mendesak</span></div>
-          <a href="#kontak" class="btn-primary" style="margin-top:28px;width:100%;justify-content:center;display:flex">Mulai Konsultasi Gratis</a>
+          <a href="#kontak-detail" class="btn-primary" style="margin-top:28px;width:100%;justify-content:center;display:flex">Mulai Konsultasi Gratis</a>
         </div>
       </div>
 
@@ -910,11 +913,11 @@
 
       <!-- Filter Tabs -->
       <div class="merch-tabs" role="tablist" aria-label="Filter kategori produk">
-        <button class="merch-tab active" data-cat="all">Semua</button>
-        <button class="merch-tab" data-cat="drinkware">Drinkware</button>
-        <button class="merch-tab" data-cat="apparel">Apparel</button>
-        <button class="merch-tab" data-cat="stationery">Stationery</button>
-        <button class="merch-tab" data-cat="office">Office</button>
+        <button class="merch-tab active" data-cat="all" role="tab" aria-selected="true">Semua</button>
+        <button class="merch-tab" data-cat="drinkware" role="tab" aria-selected="false">Drinkware</button>
+        <button class="merch-tab" data-cat="apparel" role="tab" aria-selected="false">Apparel</button>
+        <button class="merch-tab" data-cat="stationery" role="tab" aria-selected="false">Stationery</button>
+        <button class="merch-tab" data-cat="office" role="tab" aria-selected="false">Office</button>
       </div>
 
       <!-- Product Grid -->
@@ -1255,7 +1258,7 @@
       <div class="faq-list">
 
         <div class="faq-item">
-          <button class="faq-q">
+          <button class="faq-q" aria-expanded="false">
             Apakah konsultasi pertama gratis?
             <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -1265,7 +1268,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-q">
+          <button class="faq-q" aria-expanded="false">
             Berapa lama waktu pengerjaan proyek?
             <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -1275,7 +1278,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-q">
+          <button class="faq-q" aria-expanded="false">
             Apakah Anda melayani klien di luar NTB?
             <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -1285,7 +1288,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-q">
+          <button class="faq-q" aria-expanded="false">
             Apakah ada garansi untuk produk yang dikembangkan?
             <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -1295,7 +1298,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-q">
+          <button class="faq-q" aria-expanded="false">
             Apakah Anda bisa membantu bisnis yang belum punya sistem IT sama sekali?
             <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -1314,7 +1317,7 @@
     <div class="wrap cta-band-inner">
       <h2>Siap Mentransformasi<br/>Ekosistem Digital Anda?</h2>
       <p>Konsultasi pertama gratis. Tim ahli kami siap menganalisis kebutuhan dan merancang roadmap teknologi yang tepat untuk bisnis Anda.</p>
-      <a href="#kontak" class="btn-primary btn-lg">Mulai Konsultasi Sekarang</a>
+      <a href="#kontak-detail" class="btn-primary btn-lg">Mulai Konsultasi Sekarang</a>
     </div>
   </section>
 
@@ -1409,6 +1412,8 @@
     </div>
   </section>
 
+  </main><!-- /#main-content -->
+
   <!-- ═══════════════════════════════════════ FOOTER -->
   <footer class="footer">
     <div class="wrap footer-inner">
@@ -1439,27 +1444,27 @@
         <div class="footer-col">
           <h4>Layanan</h4>
           <ul>
-            <li><a href="#layanan">Konsultansi IT</a></li>
-            <li><a href="#layanan">Pengembangan Software</a></li>
-            <li><a href="#layanan">Cloud &amp; Infrastruktur</a></li>
-            <li><a href="#layanan">Keamanan Siber</a></li>
+            <li><a href="#layanan-detail">Konsultansi IT</a></li>
+            <li><a href="#layanan-detail">Pengembangan Software</a></li>
+            <li><a href="#layanan-detail">Cloud &amp; Infrastruktur</a></li>
+            <li><a href="#layanan-detail">Keamanan Siber</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Kapabilitas</h4>
           <ul>
-            <li><a href="#kapabilitas">Big Data Analytics</a></li>
-            <li><a href="#kapabilitas">AI &amp; Machine Learning</a></li>
-            <li><a href="#kapabilitas">System Integration</a></li>
-            <li><a href="#kapabilitas">Cloud Management</a></li>
+            <li><a href="#kapabilitas-detail">Big Data Analytics</a></li>
+            <li><a href="#kapabilitas-detail">AI &amp; Machine Learning</a></li>
+            <li><a href="#kapabilitas-detail">System Integration</a></li>
+            <li><a href="#kapabilitas-detail">Cloud Management</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Perusahaan</h4>
           <ul>
-            <li><a href="#filosofi">Filosofi Nama</a></li>
-            <li><a href="#tentang">Tentang Kami</a></li>
-            <li><a href="#kontak">Kontak</a></li>
+            <li><a href="#filosofi-detail">Filosofi Nama</a></li>
+            <li><a href="#tentang-detail">Tentang Kami</a></li>
+            <li><a href="#kontak-detail">Kontak</a></li>
           </ul>
         </div>
       </div>
@@ -1478,7 +1483,7 @@
       <span id="mascotText"></span>
       <button class="mascot-close" id="mascotClose" aria-label="Tutup">&#x2715;</button>
     </div>
-    <div class="mascot" id="mascot" role="img" aria-label="SINTA — pemandu Sintesa">
+    <div class="mascot" id="mascot" role="button" tabindex="0" aria-label="SINTA, pemandu Sintesa — klik untuk pesan">
       <svg viewBox="0 0 64 82" xmlns="http://www.w3.org/2000/svg" fill="none">
         <!-- antenna -->
         <line x1="32" y1="14" x2="32" y2="5" stroke="#00D4FF" stroke-width="2" stroke-linecap="round"/>
@@ -1521,7 +1526,7 @@
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.549 4.14 1.595 5.946L.057 24l6.305-1.654a11.9 11.9 0 005.683 1.448h.005C18.61 23.794 24 18.458 24 11.9 24 8.724 22.757 5.736 20.514 3.49 18.27 1.246 15.28 0 12.05 0z"/></svg>
       WhatsApp
     </a>
-    <a href="#kontak" class="mcta-konsultasi">Konsultasi Gratis</a>
+    <a href="#kontak-detail" class="mcta-konsultasi">Konsultasi Gratis</a>
   </div>
 
   <!-- COOKIE CONSENT -->
