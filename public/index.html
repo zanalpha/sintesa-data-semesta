@@ -28,6 +28,7 @@
   {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://sintesadatasemesta.onrender.com/#organization","name":"PT Sintesa Data Semesta","legalName":"Perseroan Terbatas Sintesa Data Semesta","url":"https://sintesadatasemesta.onrender.com","telephone":"+62817200503","email":"sintesadatasemesta@gmail.com","description":"PT Sintesa Data Semesta bergerak di bidang konsultansi IT, Big Data, AI, keamanan siber, dan infrastruktur cloud (KBLI 62209).","address":{"@type":"PostalAddress","addressLocality":"Lombok Barat","addressRegion":"Nusa Tenggara Barat","addressCountry":"ID"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"},"areaServed":{"@type":"Country","name":"Indonesia"}},{"@type":"WebSite","url":"https://sintesadatasemesta.onrender.com","name":"PT Sintesa Data Semesta","inLanguage":"id-ID"}]}
   </script>
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -80,7 +81,12 @@
     </div>
   </header>
 
-  <!-- ═══════════════════════════════════════ HERO -->
+  <!-- ═══════════════════════════════════════ MAIN SWIPER ══════════ -->
+  <div class="swiper main-swiper" id="mainSwiper">
+  <div class="swiper-wrapper">
+
+  <!-- ══ SLIDE 1 / BERANDA ══ -->
+  <div class="swiper-slide slide-hero" data-label="FILOSOFI">
   <section class="hero" id="beranda">
     <canvas id="networkCanvas" class="hero-canvas"></canvas>
     <div class="hero-scan"></div>
@@ -145,13 +151,279 @@
       </div>
     </div>
 
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <svg width="14" height="22" viewBox="0 0 14 22" fill="none"><rect x="1" y="1" width="12" height="20" rx="6" stroke="currentColor" stroke-width="1.2"/><circle cx="7" cy="6" r="2" fill="currentColor" class="scroll-dot"/></svg>
-    </div>
   </section>
+  </div><!-- /slide-hero -->
 
-  <!-- ═══════════════════════════════════════ FILOSOFI -->
+  <!-- ══ SLIDE 2 / FILOSOFI ══ -->
+  <div class="swiper-slide slide-filosofi" data-label="LAYANAN" id="filosofi">
+    <div class="slide-inner">
+      <div class="slide-left">
+        <div class="slide-eyebrow"><span class="slide-n">01</span>FILOSOFI NAMA</div>
+        <h2 class="slide-title">Nama Kami<br>Bukan Kebetulan.</h2>
+        <p class="slide-sub">Tiga kata dipilih dengan alasan — bukan sekadar nama perusahaan, tapi cerminan dari cara kami bekerja dan ke mana kami mau pergi.</p>
+        <a href="#filosofi-detail" class="slide-detail-link">
+          Pelajari Filosofi
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="slide-right">
+        <div class="slide-list">
+          <div class="slide-list-item">
+            <span class="sli-num">01</span>
+            <div class="sli-body">
+              <div class="sli-word">SINTESA</div>
+              <div class="sli-origin mono">[ Synthesis · Latin: synthesĭs ]</div>
+              <div class="sli-sub">Gabungkan yang berceceran, hasilkan sesuatu yang jauh lebih kuat.</div>
+              <div class="sli-key mono">Integrasi · Kreasi · Transformasi</div>
+            </div>
+          </div>
+          <div class="slide-list-item">
+            <span class="sli-num">02</span>
+            <div class="sli-body">
+              <div class="sli-word">DATA</div>
+              <div class="sli-origin mono">[ Data · Latin: datum ]</div>
+              <div class="sli-sub">Tanpa data, semua keputusan cuma tebak-tebakan. Kami pastikan data Anda bisa bicara.</div>
+              <div class="sli-key mono">Informasi · Intelijen · Nilai</div>
+            </div>
+          </div>
+          <div class="slide-list-item">
+            <span class="sli-num">03</span>
+            <div class="sli-body">
+              <div class="sli-word">SEMESTA</div>
+              <div class="sli-origin mono">[ Universe · Sanskrit: samasta ]</div>
+              <div class="sli-sub">Hadir penuh, dari infrastruktur sampai AI, dari konsultasi sampai eksekusi.</div>
+              <div class="sli-key mono">Global · Menyeluruh · Tak Terbatas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /slide-filosofi -->
+
+  <!-- ══ SLIDE 3 / LAYANAN ══ -->
+  <div class="swiper-slide slide-layanan" data-label="KAPABILITAS" id="layanan">
+    <div class="slide-inner">
+      <div class="slide-left">
+        <div class="slide-eyebrow"><span class="slide-n">02</span>LAYANAN</div>
+        <h2 class="slide-title">Solusi Teknologi<br>Terpadu.</h2>
+        <p class="slide-sub">Tujuh bidang layanan terintegrasi untuk kebutuhan digital bisnis Anda dari hulu ke hilir.</p>
+        <a href="#layanan-detail" class="slide-detail-link">
+          Lihat Detail
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="slide-right">
+        <div class="slide-list slide-list--links">
+          <a href="#layanan-detail" class="slide-list-item sli-link">
+            <span class="sli-num">01</span>
+            <div class="sli-body"><div class="sli-title">Konsultansi IT &amp; Manajemen Fasilitas</div></div>
+            <svg class="sli-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <a href="#layanan-detail" class="slide-list-item sli-link">
+            <span class="sli-num">02</span>
+            <div class="sli-body"><div class="sli-title">Pengembangan Perangkat Lunak Custom</div></div>
+            <svg class="sli-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <a href="#layanan-detail" class="slide-list-item sli-link">
+            <span class="sli-num">03</span>
+            <div class="sli-body"><div class="sli-title">Infrastruktur Cloud &amp; Hosting</div></div>
+            <svg class="sli-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <a href="#layanan-detail" class="slide-list-item sli-link">
+            <span class="sli-num">04</span>
+            <div class="sli-body"><div class="sli-title">Jasa Teknologi Informasi &amp; Komputer</div></div>
+            <svg class="sli-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <a href="#layanan-detail" class="slide-list-item sli-link">
+            <span class="sli-num">05</span>
+            <div class="sli-body"><div class="sli-title">Hardware, Jaringan &amp; Perlengkapan IT</div></div>
+            <svg class="sli-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <a href="#layanan-detail" class="slide-list-item sli-link">
+            <span class="sli-num">06</span>
+            <div class="sli-body"><div class="sli-title">Distribusi Lisensi Perangkat Lunak</div></div>
+            <svg class="sli-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <a href="#layanan-detail" class="slide-list-item sli-link sli-featured">
+            <span class="sli-num">07</span>
+            <div class="sli-body"><div class="sli-title">Konsultansi &amp; Manajemen Keamanan Siber <span class="sli-badge">★</span></div></div>
+            <svg class="sli-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div><!-- /slide-layanan -->
+
+  <!-- ══ SLIDE 4 / KAPABILITAS ══ -->
+  <div class="swiper-slide slide-kapabilitas" data-label="TENTANG" id="kapabilitas">
+    <div class="slide-inner">
+      <div class="slide-left">
+        <div class="slide-eyebrow"><span class="slide-n">03</span>KAPABILITAS</div>
+        <h2 class="slide-title">Kemampuan Inti<br>yang Kami Kuasai.</h2>
+        <p class="slide-sub">Empat domain teknologi paling kritis dan bernilai tinggi — kami kuasai secara mendalam dan terbukti.</p>
+        <a href="#kapabilitas-detail" class="slide-detail-link">
+          Lihat Kapabilitas
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="slide-right">
+        <div class="slide-list">
+          <div class="slide-list-item">
+            <span class="sli-num">01</span>
+            <div class="sli-body">
+              <div class="sli-title">Big Data Analytics &amp; Business Intelligence</div>
+              <div class="sli-sub">Pipeline data · Dashboard real-time · Predictive analytics · BI platform</div>
+            </div>
+          </div>
+          <div class="slide-list-item">
+            <span class="sli-num">02</span>
+            <div class="sli-body">
+              <div class="sli-title">System Integration (Integrator Sistem)</div>
+              <div class="sli-sub">API &amp; middleware · ERP/CRM · Legacy modernization · Microservices</div>
+            </div>
+          </div>
+          <div class="slide-list-item">
+            <span class="sli-num">03</span>
+            <div class="sli-body">
+              <div class="sli-title">Artificial Intelligence &amp; Machine Learning</div>
+              <div class="sli-sub">Model training · NLP · Computer Vision · Intelligent automation</div>
+            </div>
+          </div>
+          <div class="slide-list-item">
+            <span class="sli-num">04</span>
+            <div class="sli-body">
+              <div class="sli-title">Keamanan Siber &amp; Compliance</div>
+              <div class="sli-sub">Penetration testing · ISO 27001 · NIST · Incident response</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /slide-kapabilitas -->
+
+  <!-- ══ SLIDE 5 / TENTANG ══ -->
+  <div class="swiper-slide slide-tentang" data-label="KONTAK" id="tentang">
+    <div class="slide-inner">
+      <div class="slide-left">
+        <div class="slide-eyebrow"><span class="slide-n">04</span>TENTANG KAMI</div>
+        <h2 class="slide-title">Mitra Teknologi<br>Terpercaya.</h2>
+        <p class="slide-sub">PT Sintesa Data Semesta hadir sebagai partner IT yang membantu korporat dan startup Indonesia tumbuh melalui teknologi yang tepat, aman, dan terukur.</p>
+        <a href="#tentang-detail" class="slide-detail-link">
+          Lebih Lanjut
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="slide-right">
+        <div class="slide-about-box">
+          <div class="sab-logo">
+            <img src="assets/images/logo/logo-sintesa.svg" alt="Logo Sintesa" width="64" height="64">
+          </div>
+          <div class="sab-name">
+            <div class="sab-title">PT Sintesa Data Semesta</div>
+            <div class="sab-sub mono">KBLI 62209 · Lombok Barat, NTB</div>
+          </div>
+        </div>
+        <div class="slide-list slide-list--values">
+          <div class="slide-list-item">
+            <span class="sli-num">○</span>
+            <div class="sli-body">
+              <div class="sli-title">Inovatif</div>
+              <div class="sli-sub">Selalu mencari cara terbaik dan paling efisien untuk setiap tantangan teknologi.</div>
+            </div>
+          </div>
+          <div class="slide-list-item">
+            <span class="sli-num">○</span>
+            <div class="sli-body">
+              <div class="sli-title">Terpercaya</div>
+              <div class="sli-sub">Transparansi penuh dan komitmen 100% pada setiap proyek yang kami kerjakan.</div>
+            </div>
+          </div>
+          <div class="slide-list-item">
+            <span class="sli-num">○</span>
+            <div class="sli-body">
+              <div class="sli-title">Berdampak</div>
+              <div class="sli-sub">Solusi yang bukan hanya bekerja — tapi benar-benar mengubah cara bisnis Anda beroperasi.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /slide-tentang -->
+
+  <!-- ══ SLIDE 6 / KONTAK ══ -->
+  <div class="swiper-slide slide-kontak" data-label="" id="kontak">
+    <div class="slide-inner">
+      <div class="slide-left">
+        <div class="slide-eyebrow"><span class="slide-n">05</span>KONTAK</div>
+        <h2 class="slide-title">Mulai Perjalanan<br>Digital Anda.</h2>
+        <p class="slide-sub">Konsultasi pertama gratis dan tanpa komitmen. Tim kami siap mendengar dan memberikan solusi yang tepat untuk bisnis Anda.</p>
+        <div class="slide-cta-group">
+          <a href="https://wa.me/62817200503?text=Halo%20PT%20Sintesa%20Data%20Semesta%2C%20saya%20ingin%20konsultasi." target="_blank" rel="noopener" class="btn-primary">
+            Hubungi via WhatsApp
+          </a>
+          <a href="#kontak-detail" class="btn-ghost">Kirim Pesan</a>
+        </div>
+      </div>
+      <div class="slide-right">
+        <div class="slide-list slide-list--contact">
+          <div class="slide-list-item">
+            <span class="sli-num">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke="currentColor" stroke-width="1.8"/></svg>
+            </span>
+            <div class="sli-body">
+              <div class="sli-title">Telepon / WhatsApp</div>
+              <a href="tel:+62817200503" class="sli-contact-val mono">+62 817-200-503</a>
+            </div>
+          </div>
+          <div class="slide-list-item">
+            <span class="sli-num">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="sli-body">
+              <div class="sli-title">Email</div>
+              <a href="mailto:sintesadatasemesta@gmail.com" class="sli-contact-val mono">sintesadatasemesta@gmail.com</a>
+            </div>
+          </div>
+          <div class="slide-list-item">
+            <span class="sli-num">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="1.8"/></svg>
+            </span>
+            <div class="sli-body">
+              <div class="sli-title">Lokasi</div>
+              <div class="sli-contact-val">Lombok Barat, NTB, Indonesia</div>
+            </div>
+          </div>
+          <div class="slide-list-item">
+            <span class="sli-num">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <div class="sli-body">
+              <div class="sli-title">Jam Operasional</div>
+              <div class="sli-contact-val">Senin – Jumat, 08.00 – 17.00 WIB</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /slide-kontak -->
+
+  </div><!-- /swiper-wrapper -->
+
+  <!-- SLIDE COUNTER -->
+  <div class="slide-counter" id="slideCounter">01 / 06</div>
+
+  <!-- NEXT SLIDE INDICATOR -->
+  <button class="slide-indicator" id="slideIndicator" aria-label="Slide berikutnya">
+    <span class="si-label" id="slideIndicatorLabel">FILOSOFI</span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  </div><!-- /main-swiper -->
+
+  <!-- ═══════════════════ DETAIL SECTIONS (di bawah swiper) ═══════════════ -->
+
+  <!-- ═══════════════════════════════════════ FILOSOFI DETAIL -->
+  <section class="filosofi" id="filosofi-detail">
   <section class="filosofi" id="filosofi">
     <div class="wrap">
       <div class="section-eye">Filosofi Nama</div>
@@ -263,8 +535,8 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════ LAYANAN -->
-  <section class="layanan" id="layanan">
+  <!-- ═══════════════════════════════════════ LAYANAN DETAIL -->
+  <section class="layanan" id="layanan-detail">
     <div class="wrap">
       <div class="section-eye">Layanan</div>
       <h2 class="section-title">Tujuh Pilar Solusi Digital</h2>
@@ -355,8 +627,8 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════ KAPABILITAS -->
-  <section class="kapabilitas" id="kapabilitas">
+  <!-- ═══════════════════════════════════════ KAPABILITAS DETAIL -->
+  <section class="kapabilitas" id="kapabilitas-detail">
     <div class="kap-bg-grid"></div>
     <div class="wrap">
       <div class="section-eye">Visi Bisnis</div>
@@ -499,8 +771,8 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════ TENTANG -->
-  <section class="tentang" id="tentang">
+  <!-- ═══════════════════════════════════════ TENTANG DETAIL -->
+  <section class="tentang" id="tentang-detail">
     <div class="wrap tentang-inner">
       <div class="tentang-visual">
         <div class="tentang-card">
@@ -1038,8 +1310,8 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════ KONTAK -->
-  <section class="kontak" id="kontak">
+  <!-- ═══════════════════════════════════════ KONTAK DETAIL -->
+  <section class="kontak" id="kontak-detail">
     <div class="wrap kontak-inner">
       <div class="kontak-info">
         <div class="section-eye">Kontak</div>
@@ -1267,6 +1539,7 @@
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M18 15l-6-6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="assets/js/script.js" defer></script>
   <noscript><style>.preloader{display:none!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </body>

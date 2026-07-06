@@ -514,6 +514,89 @@ function initMerch() {
 }
 
 /* ── INIT ── */
+/* ── MAIN SWIPER INIT ── */
+function initMainSwiper() {
+  if (typeof Swiper === 'undefined') return;
+  const swiperEl = document.getElementById('mainSwiper');
+  if (!swiperEl) return;
+
+  const slides = swiperEl.querySelectorAll('.swiper-slide');
+  const total  = slides.length;
+  const counter = document.getElementById('slideCounter');
+  const indicator = document.getElementById('slideIndicator');
+  const indicatorLabel = document.getElementById('slideIndicatorLabel');
+
+  const swiper = new Swiper('#mainSwiper', {
+    direction: 'horizontal',
+    slidesPerView: 1,
+    speed: 700,
+    mousewheel: {
+      enabled: true,
+      thresholdDelta: 30,
+      releaseOnEdges: true,
+    },
+    keyboard: { enabled: true },
+    grabCursor: true,
+    on: {
+      slideChange() { updateUI(this.activeIndex); },
+      init()        { updateUI(0); },
+    },
+  });
+
+  // Navbar / btn-nav click → slide to correct index
+  const hrefToIndex = {
+    '#beranda': 0, '#filosofi': 1, '#layanan': 2,
+    '#kapabilitas': 3, '#tentang': 4, '#kontak': 5,
+  };
+  document.querySelectorAll('.nav-links a, .btn-nav').forEach(link => {
+    const href = link.getAttribute('href');
+    if (hrefToIndex[href] !== undefined) {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        swiper.slideTo(hrefToIndex[href]);
+      });
+    }
+  });
+
+  // Indicator click → next slide
+  if (indicator) indicator.addEventListener('click', () => swiper.slideNext());
+
+  // Back-to-top → slide 0 instead of scroll
+  const backBtn = document.getElementById('backTop');
+  if (backBtn) {
+    backBtn.addEventListener('click', e => {
+      e.preventDefault();
+      swiper.slideTo(0);
+    });
+  }
+
+  function updateUI(index) {
+    // Counter text
+    if (counter) {
+      counter.textContent =
+        String(index + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    }
+    // Next-slide indicator
+    if (indicator) {
+      const isLast = index >= total - 1;
+      indicator.classList.toggle('hidden', isLast);
+      if (!isLast && indicatorLabel) {
+        indicatorLabel.textContent = slides[index + 1]?.dataset.label || '';
+      }
+    }
+    // Active nav link
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    const hrefs = [null, '#filosofi', '#layanan', '#kapabilitas', '#tentang', '#kontak'];
+    const activeHref = hrefs[index];
+    if (activeHref) {
+      document.querySelector(`.nav-links a[href="${activeHref}"]`)?.classList.add('active');
+    }
+    // Canvas — only on hero slide
+    const canvas = document.getElementById('networkCanvas');
+    if (canvas) canvas.style.opacity = index === 0 ? '0.6' : '0';
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initReveal();
@@ -528,16 +611,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursorGlow();
   initMascot();
   initMerch();
+  initMainSwiper();
 
-  // Hero canvas — pause when scrolled out of view (performance)
+  // Hero canvas — pause/resume based on visibility in swiper
   const heroCanvas = document.getElementById('networkCanvas');
   if (heroCanvas) {
     const heroNet = new NetworkCanvas(heroCanvas);
     heroNet.start();
-    const heroObs = new IntersectionObserver(entries => {
-      entries.forEach(e => e.isIntersecting ? heroNet.start() : heroNet.stop());
-    }, { rootMargin: '200px' });
-    heroObs.observe(heroCanvas.closest('section') || heroCanvas);
     document.addEventListener('visibilitychange', () => {
       document.hidden ? heroNet.stop() : heroNet.start();
     });
