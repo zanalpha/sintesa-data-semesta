@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404 — Halaman Tidak Ditemukan | PT Sintesa Data Semesta</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg"/>
+  <style>
+    :root {
+      --blue:  #3D87CB;
+      --gold:  #FAC530;
+      --cyan:  #00D4FF;
+      --deep:  #1A1A1A;
+      --void:  #0A0A0A;
+      --t1:    #F0F4F8;
+      --t2:    #A0B0C0;
+      --t3:    #5A6A7A;
+      --sans:  'Segoe UI', system-ui, sans-serif;
+      --mono:  'Courier New', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      background: var(--void);
+      color: var(--t1);
+      font-family: var(--sans);
+      overflow: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 0.5px, transparent 0.5px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 0.5px, transparent 0.5px);
+      background-size: 200px 160px;
+      pointer-events: none;
+    }
+    .page {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 100vh; padding: 2rem;
+      text-align: center;
+      gap: 0;
+    }
+    .code {
+      font-family: var(--mono);
+      font-size: clamp(5rem, 20vw, 10rem);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.15em;
+    }
+    .label {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      font-family: var(--mono);
+      color: var(--cyan);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+      opacity: 0.8;
+    }
+    h1 {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 600;
+      color: var(--t1);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    p {
+      color: var(--t2);
+      font-size: 1rem;
+      max-width: 440px;
+      line-height: 1.7;
+      margin-bottom: 2.4rem;
+    }
+    .actions {
+      display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--blue);
+      color: #fff;
+      border: none; border-radius: 100px;
+      padding: 13px 28px;
+      font-size: 0.95rem; font-weight: 600; font-family: var(--sans);
+      cursor: pointer; text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+      box-shadow: 0 4px 18px rgba(61,135,203,0.35);
+    }
+    .btn-primary:hover {
+      background: #2f71b0;
+      box-shadow: 0 6px 24px rgba(61,135,203,0.55);
+      transform: translateY(-1px);
+    }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent;
+      color: var(--t2);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 13px 28px;
+      font-size: 0.95rem; font-weight: 500; font-family: var(--sans);
+      cursor: pointer; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+    .mascot-wrap {
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    .mascot-svg { width: 72px; height: auto; }
+    .glow {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(61,135,203,0.07), transparent);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .mascot-svg { animation: float404 3.6s ease-in-out infinite; }
+      @keyframes float404 {
+        0%,100% { transform: translateY(0); }
+        50%      { transform: translateY(-8px); }
+      }
+    }
+    @media (max-width: 480px) {
+      .actions { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <main class="page">
+    <div class="mascot-wrap">
+      <svg class="mascot-svg" viewBox="0 0 100 165" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+        <defs>
+          <radialGradient id="rg1" cx="30%" cy="20%" r="75%">
+            <stop offset="0%" stop-color="#f8fbff"/>
+            <stop offset="100%" stop-color="#b0c4d4"/>
+          </radialGradient>
+          <radialGradient id="rg2" cx="35%" cy="25%" r="70%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="100%" stop-color="#bdd0e0"/>
+          </radialGradient>
+          <filter id="ef" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="1.8" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <ellipse cx="50" cy="162" rx="22" ry="3" fill="#00c8ff" opacity="0.15"/>
+        <g>
+          <rect x="28" y="114" width="18" height="26" rx="7" fill="url(#rg1)"/>
+          <rect x="26" y="132" width="22" height="5" rx="2.5" fill="#0b1929" stroke="#00c8ff" stroke-width="0.8"/>
+          <rect x="22" y="136" width="25" height="18" rx="8" fill="#0b1929" stroke="#00c8ff" stroke-width="1.1"/>
+          <ellipse cx="34" cy="151" rx="5" ry="3.5" fill="#00c8ff" opacity="0.4"/>
+          <rect x="54" y="114" width="18" height="26" rx="7" fill="url(#rg1)"/>
+          <rect x="52" y="132" width="22" height="5" rx="2.5" fill="#0b1929" stroke="#00c8ff" stroke-width="0.8"/>
+          <rect x="53" y="136" width="25" height="18" rx="8" fill="#0b1929" stroke="#00c8ff" stroke-width="1.1"/>
+          <ellipse cx="66" cy="151" rx="5" ry="3.5" fill="#00c8ff" opacity="0.4"/>
+        </g>
+        <g>
+          <rect x="79" y="66" width="14" height="24" rx="6" fill="url(#rg1)"/>
+          <ellipse cx="86" cy="90" rx="7" ry="5" fill="#0b1929" stroke="#00c8ff" stroke-width="0.9"/>
+          <rect x="80" y="87" width="13" height="22" rx="6" fill="url(#rg1)"/>
+          <rect x="79" y="107" width="15" height="5" rx="2.5" fill="#0b1929" stroke="#00c8ff" stroke-width="0.7"/>
+          <rect x="78" y="110" width="15" height="13" rx="5" fill="#0b1929" stroke="#00c8ff" stroke-width="1"/>
+        </g>
+        <g>
+          <rect x="33" y="108" width="34" height="10" rx="5" fill="#0b1929"/>
+          <ellipse cx="40" cy="113" rx="6" ry="5" fill="#0b1929" stroke="#00c8ff" stroke-width="0.9"/>
+          <ellipse cx="60" cy="113" rx="6" ry="5" fill="#0b1929" stroke="#00c8ff" stroke-width="0.9"/>
+          <rect x="22" y="62" width="56" height="50" rx="13" fill="url(#rg2)"/>
+          <rect x="35" y="72" width="30" height="26" rx="6" fill="#080f1a" stroke="#1d4c7a" stroke-width="0.8"/>
+          <circle cx="50" cy="85" r="11" fill="none" stroke="#3D87CB" stroke-width="1.5"/>
+          <text x="50" y="91" text-anchor="middle" font-size="14" font-weight="900" font-style="italic" fill="#3D87CB" font-family="Arial,sans-serif">S</text>
+          <rect x="20" y="61" width="13" height="10" rx="5" fill="url(#rg2)"/>
+          <rect x="67" y="61" width="13" height="10" rx="5" fill="url(#rg2)"/>
+          <circle cx="22" cy="71" r="7" fill="#0b1929" stroke="#00c8ff" stroke-width="1.1"/>
+          <circle cx="78" cy="71" r="7" fill="#0b1929" stroke="#00c8ff" stroke-width="1.1"/>
+        </g>
+        <g>
+          <rect x="8" y="64" width="14" height="14" rx="7" fill="url(#rg1)"/>
+          <ellipse cx="8" cy="71" rx="8" ry="7" fill="#0b1929" stroke="#00c8ff" stroke-width="0.9"/>
+          <rect x="2" y="38" width="13" height="35" rx="6" fill="url(#rg1)"/>
+          <rect x="1" y="36" width="15" height="5" rx="2.5" fill="#0b1929" stroke="#00c8ff" stroke-width="0.7"/>
+          <rect x="1" y="19" width="14" height="19" rx="6" fill="#0b1929" stroke="#00c8ff" stroke-width="1"/>
+          <rect x="10" y="8" width="9" height="14" rx="4.5" fill="#0b1929" stroke="#00c8ff" stroke-width="1"/>
+          <ellipse cx="14" cy="8" rx="4.5" ry="4" fill="#101e2e" stroke="#00c8ff" stroke-width="0.8"/>
+        </g>
+        <g>
+          <rect x="43" y="52" width="14" height="13" rx="5" fill="#0b1929" stroke="#00c8ff" stroke-width="0.7"/>
+          <ellipse cx="50" cy="28" rx="28" ry="26" fill="url(#rg2)"/>
+          <rect x="37" y="6" width="26" height="9" rx="4.5" fill="#0b1929"/>
+          <circle cx="22" cy="28" r="10" fill="#0b1929" stroke="#00c8ff" stroke-width="1.3"/>
+          <circle cx="22" cy="28" r="6" fill="#08101f" stroke="#3D87CB" stroke-width="0.7"/>
+          <text x="22" y="32" text-anchor="middle" font-size="7" font-weight="900" font-style="italic" fill="#3D87CB" font-family="Arial,sans-serif">S</text>
+          <circle cx="78" cy="28" r="7" fill="#0b1929" stroke="#00c8ff" stroke-width="1"/>
+          <circle cx="78" cy="28" r="4" fill="#08101f" stroke="#3D87CB" stroke-width="0.5"/>
+          <rect x="26" y="15" width="48" height="32" rx="13" fill="#050c18"/>
+          <rect x="27" y="16" width="46" height="30" rx="12" fill="none" stroke="#00c8ff" stroke-width="0.4" opacity="0.5"/>
+          <g filter="url(#ef)">
+            <rect x="31" y="20" width="14" height="18" rx="3.5" fill="#00cfff"/>
+            <rect x="33" y="22" width="5" height="6" rx="1.5" fill="white" opacity="0.5"/>
+          </g>
+          <g filter="url(#ef)">
+            <rect x="55" y="20" width="14" height="18" rx="3.5" fill="#00cfff"/>
+            <rect x="57" y="22" width="5" height="6" rx="1.5" fill="white" opacity="0.5"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="code">404</div>
+    <div class="label">Error — Halaman Tidak Ditemukan</div>
+    <h1>Sepertinya halaman ini tersesat</h1>
+    <p>URL yang Anda kunjungi tidak ada atau telah dipindahkan. SINTA akan memandu Anda kembali ke jalur yang benar.</p>
+    <div class="actions">
+      <a href="/" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Kembali ke Beranda
+      </a>
+      <a href="https://wa.me/62817200503" target="_blank" rel="noopener" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.549 4.14 1.595 5.946L.057 24l6.305-1.654a11.9 11.9 0 005.683 1.448h.005C18.61 23.794 24 18.458 24 11.9 24 8.724 22.757 5.736 20.514 3.49 18.27 1.246 15.28 0 12.05 0z"/></svg>
+        Hubungi Kami
+      </a>
+    </div>
+  </main>
+</body>
+</html>

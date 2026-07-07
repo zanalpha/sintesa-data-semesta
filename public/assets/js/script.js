@@ -277,7 +277,7 @@ function initMascot() {
   const textEl  = document.getElementById('mascotText');
   const closeBtn= document.getElementById('mascotClose');
   const mascot  = document.getElementById('mascot');
-  if (!wrap || !bubble || !textEl || !mascot) return;
+  if (!wrap || !bubble || !textEl || !mascot || !closeBtn) return;
 
   const mascotSvg = mascot.querySelector('.mascot-svg');
 
@@ -289,7 +289,7 @@ function initMascot() {
     'kapabilitas': 'Ini keahlian inti tim kami ✨',
     'kenapa'     : 'Banyak alasan untuk pilih kami 💪',
     'tentang'    : 'Kenalan lebih dekat yuk! 😊',
-    'faq'        : 'Ada pertanyaan? Saya bantu! 🤔',
+    'faq-detail' : 'Ada pertanyaan? Saya bantu! 🤔',
     'merch'      : 'Cek koleksi merchandise branded kami! 🎁',
     'kontak'     : 'Yuk hubungi kami — gratis! 🚀',
   };
@@ -347,8 +347,10 @@ function initMascot() {
     if (dur) setTimeout(() => el.classList.remove(cls), dur);
   }
 
-  /* ── Auto eye blink every 3–8 s ── */
+  /* ── Auto eye blink every 3–8 s (skip if reduced-motion) ── */
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function scheduleEyeBlink() {
+    if (prefersReducedMotion) return;
     setTimeout(() => {
       animPart('.ms-eye-l', 'anim-blink', 450);
       setTimeout(() => animPart('.ms-eye-r', 'anim-blink', 450), 90);
@@ -377,6 +379,8 @@ function initMascot() {
     } else if (name === 'dance') {
       setTimeout(() => animPart('.ms-arm-r', 'anim-swing', 1600), 100);
       setTimeout(() => animPart('.ms-arm-l', 'anim-wave',  1100), 350);
+      setTimeout(() => animPart('.ms-leg-l', 'anim-walk',  1550), 100);
+      setTimeout(() => animPart('.ms-leg-r', 'anim-walk',  1550), 100);
     } else if (name === 'shake') {
       setTimeout(() => animPart('.ms-head',  'anim-shake', 850),    0);
     } else if (name === 'spin') {
@@ -394,9 +398,10 @@ function initMascot() {
     }, delay);
   }
 
-  setTimeout(() => mascot._play('greet'), 1000);
-  scheduleIdle();
-
+  if (!prefersReducedMotion) {
+    setTimeout(() => mascot._play('greet'), 1000);
+    scheduleIdle();
+  }
   setTimeout(() => showBubble(messages['beranda'], 5000), 2000);
 
   const obs = new IntersectionObserver(entries => {
@@ -650,6 +655,18 @@ function initMainSwiper() {
   }
 }
 
+/* ── MOBILE CTA — hide when near contact section ── */
+function initMobileCTA() {
+  const bar = document.getElementById('mobileCTABar');
+  const target = document.getElementById('kontak-detail');
+  if (!bar || !target) return;
+  const obs = new IntersectionObserver(entries => {
+    bar.style.opacity = entries[0].isIntersecting ? '0' : '';
+    bar.style.pointerEvents = entries[0].isIntersecting ? 'none' : '';
+  }, { threshold: 0.1 });
+  obs.observe(target);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initReveal();
@@ -665,6 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMascot();
   initMerch();
   initMainSwiper();
+  initMobileCTA();
 
   // Hero canvas — pause/resume based on visibility in swiper
   const heroCanvas = document.getElementById('networkCanvas');
